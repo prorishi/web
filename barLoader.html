@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="A simple bar loading animation" />
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <title>Bar Loading Animation</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #000000e3;
+            }
+            #wrapper {
+                position: absolute;
+                width: 50%;
+                height: 6%;
+                left: 24%;
+                top: 42%;
+                border: 5px solid green;
+                background-color: #141414f1;
+            }
+            #bar {
+                position: relative;
+                width: 0%;
+                height: 102%;
+                background-color: yellow;
+                border-width: 0;
+            }
+            #footer {
+                position: absolute;
+                width: 50%;
+                height: 6%;
+                left: 24%;
+                top: 55%;
+            }
+            #start {
+                margin-top: 100px;
+                color: #ffffff;
+                background-color: transparent;
+                text-decoration: none;
+                outline: none;
+                border: 2px double #fff;
+                border-radius: 4px;
+                padding: 1% 2.5%;
+                font-size: x-large;
+            }
+            #percent {
+                position: absolute;
+                right: 0%;
+                color: #ffffff;
+                font-size: x-large;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="bar"></div>
+        </div>
+        <div id="footer">
+            <span id="start" onclick="start()">Start!</span>
+            <span id="percent">0%</span>
+        </div>
+        <script>
+            var bar = document.getElementById("bar").style;
+            var label = document.getElementById("percent");
+
+            function start() {
+                for (let width = 0; width <= 100; width++) {
+                    setTimeout(() => {
+                        label.innerText = bar.width = `${width}%`;
+                    }, 150 * width);
+                }
+                setTimeout(() => {
+                    swal({
+                        title: "Finished Loading!!!",
+                        text: "Click the Button to Proceed.",
+                        icon: "success",
+                        button: "   → ",
+                    }).then(value => {
+                        label.innerText = bar.width = "0%";
+                    });
+                }, 15100);
+            }
+        </script>
+    </body>
+</html>

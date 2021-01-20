@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="shortcut icon" href="data:" type="image/x-icon" />
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+        height: 100vh;
+        background: linear-gradient(to bottom right, orange, white, green);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      img {
+        width: 22vh;
+        height: 22vh;
+        animation: rotation 48s infinite linear;
+      }
+      @keyframes rotation {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+    </style>
+    <title>Happy Independence Day</title>
+  </head>
+  <body>
+    <img src="./components/images/chakra.png" />
+    <script>
+      swal("Happy Independence Day", "Pround to be an Indian 🇮");
+      let bgm = new Audio("./components/audios/bgm.mp3");
+      window.onclick = () => {
+        bgm.play();
+        delete window.onclick;
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+            }
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                background-color: #44dbb3;
+            }
+            div {
+                position: relative;
+                border-radius: 6px;
+            }
+            #page2 {
+                height: 350px;
+                width: 250px;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                perspective: 1000px;
+                background-image: url(./components/images/page2.jpg);
+            }
+            #page1 {
+                position: absolute;
+                height: 100%;
+                width: 220px;
+                left: 30px;
+                transform: rotateY(-25deg);
+                transform-style: preserve-3d;
+                transform-origin: left;
+                transition: all 0.4s ease-in;
+            }
+            #page2:active #page1 {
+                transform: rotateY(-180deg);
+                color: transparent;
+            }
+            figure {
+                display: block;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+            }
+            #front {
+                background-image: url(./components/images/front.jpg);
+            }
+            #back {
+                transform: rotateY(180deg);
+                background-image: url(./components/images/page1.jpg);
+            }
+        </style>
+        <title>Happy Raksha Bandhan</title>
+    </head>
+    <body>
+        <div id="page2">
+            <div id="page1">
+                <figure id="front"></figure>
+                <figure id="back"></figure>
+            </div>
+        </div>
+        <script>
+            swal("Happy Rakshabandhan 🙂", "").then((result) =>
+                swal("Long press to open the Card", "", { icon: "info" })
+            );
+        </script>
+    </body>
+</html>
