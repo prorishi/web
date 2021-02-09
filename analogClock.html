@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, height=device-height,  initial-scale=1.0"
+        />
+        <title>Analog Clock</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html,
+            body {
+                height: 100%;
+            }
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #clock {
+                width: 40vh;
+                height: 40vh;
+                border: 1vh solid;
+                border-radius: 50%;
+                position: relative;
+            }
+            #clock > div {
+                width: 1vh;
+                position: absolute;
+                left: 19vh;
+                top: 19vh;
+                transform: translate(-50% -50%);
+                transform-origin: top;
+                border-radius: 2em;
+            }
+            #hour {
+                height: 10vh;
+                background-color: #00ffff96;
+            }
+            #minute {
+                height: 14vh;
+                background-color: #892be296;
+            }
+            #second {
+                height: 18vh;
+                background-color: #dc143c96;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="clock">
+            <div id="second"></div>
+            <div id="minute"></div>
+            <div id="hour"></div>
+        </div>
+
+        <script>
+            const hands = [
+                document.getElementById("hour"),
+                document.getElementById("minute"),
+                document.getElementById("second"),
+            ];
+
+            setInterval(() => {
+                let time = new Date();
+                let hours = time.getHours(),
+                    minutes = time.getMinutes(),
+                    seconds = time.getSeconds();
+                if (hours > 12) hours -= 12;
+                if (hours == 0) hours = 12;
+                rotate(hands[0], hours * 30 + minutes / 2);
+                rotate(hands[1], minutes * 6 + seconds / 10);
+                rotate(hands[2], seconds * 6);
+            }, 100);
+
+            function rotate(element, angle) {
+                element.style.transform = `rotateZ(${angle + 180}deg)`;
+            }
+        </script>
+    </body>
+</html>
